@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ˆ—‚ÌÀsŠÔ‚Éƒ}[ƒN‚ğ•t‚¯‚é‚±‚Æ‚ª‚Å‚«‚éƒXƒgƒbƒvƒEƒHƒbƒ`‚Å‚·B
+ * å‡¦ç†ã®å®Ÿè¡Œæ™‚é–“ã«ãƒãƒ¼ã‚¯ã‚’ä»˜ã‘ã‚‹ã“ã¨ãŒã§ãã‚‹ã‚¹ãƒˆãƒƒãƒ—ã‚¦ã‚©ãƒƒãƒã§ã™ã€‚
  * 
  * <pre>
  * MarkingStopWatch watch = new MarkingStopWatch();
@@ -12,12 +12,15 @@ import java.util.List;
  * watch.mark("first");
  * watch.mark("second");
  * watch.stop();
- * watch.report();
+ * System.out.println(watch.report());
  * </pre>
- * 
+ * ã‚’å®Ÿè¡Œã™ã‚‹ã¨ä¸‹è¨˜ã®ã‚ˆã†ã«markã—ãŸç®‡æ‰€ã®å‡¦ç†ã¾ã§ã®æ™‚é–“ã‚’æ¸¬ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
  * <pre>
- * 
- * </pre>
+ * NAME                                   TIME(ms)    CUMULATIVE(ms)  PERCENTAGE
+ * first                                   102         102             33.55%
+ * second                                  101         203             33.22%
+ * _stop_                                  101         304             33.22%
+ * <pre>
  */
 public class MarkingStopwatch {
 
@@ -26,16 +29,16 @@ public class MarkingStopwatch {
     private long stoppedTime = -1;
     
     /**
-     * ƒXƒgƒbƒvƒEƒHƒbƒ`‚ğŠJn‚µ‚Ü‚·B
+     * ï¿½Xï¿½gï¿½bï¿½vï¿½Eï¿½Hï¿½bï¿½`ï¿½ï¿½ï¿½Jï¿½nï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
      */
     public void start() {
         startedTime = System.currentTimeMillis();    
     }
 
     /**
-     * I‚í‚Á‚½ˆ—‚Éƒ}[ƒN‚ğ‚Â‚¯‚Ü‚·B{@link #report()}ƒƒ\ƒbƒh‚Åg—p‚³‚ê‚Ü‚·B
+     * ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éƒ}ï¿½[ï¿½Nï¿½ï¿½ï¿½Â‚ï¿½ï¿½Ü‚ï¿½ï¿½B{@link #report()}ï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
      * 
-     * @param name ƒ}[ƒN‚Ì–¼‘O
+     * @param name ï¿½}ï¿½[ï¿½Nï¿½Ì–ï¿½ï¿½O
      */
     public void mark(String name) {
         if (stoppedTime != -1) {
@@ -45,7 +48,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * ƒXƒgƒbƒvƒEƒHƒbƒ`‚ğ’â~‚µ‚Ü‚·B
+     * ï¿½Xï¿½gï¿½bï¿½vï¿½Eï¿½Hï¿½bï¿½`ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
      */
     public void stop() {
         if (stoppedTime == -1) {
@@ -54,18 +57,18 @@ public class MarkingStopwatch {
     }
     
     /**
-     * Œ»İ‚Ì - ŠJnŠÔ‚ğæ“¾‚µ‚Ü‚·B
+     * ï¿½ï¿½ï¿½İ‚Ìï¿½ï¿½ï¿½ - ï¿½Jï¿½nï¿½ï¿½ï¿½Ô‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
      * 
-     * @return Œ»İ‚Ì - ŠJnŠÔ
+     * @return ï¿½ï¿½ï¿½İ‚Ìï¿½ï¿½ï¿½ - ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½
      */
     public long getCurrentElapsedTime() {
         return System.currentTimeMillis() - startedTime;
     }
     
     /**
-     * ‡ŒvŠÔ‚ğæ“¾‚µ‚Ü‚·Bstop() - start()‚Ì·‚É‚È‚è‚Ü‚·B
+     * ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Ô‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Bstop() - start()ï¿½Ìï¿½ï¿½É‚È‚ï¿½Ü‚ï¿½ï¿½B
      * 
-     * @return ‡ŒvŠÔ
+     * @return ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½
      */
     public long getTotalTime() {
         stop();
@@ -73,7 +76,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * ˆ—ŠÔ‚ğ‚Ü‚Æ‚ß‚Ä‰º‹L‚Ì‚æ‚¤‚È•¶š—ñ‚ğ•Ô‚µ‚Ü‚·B
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Ü‚Æ‚ß‚Ä‰ï¿½ï¿½Lï¿½Ì‚æ‚¤ï¿½È•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Ü‚ï¿½ï¿½B
      * 
      * <pre>
      * NAME                      TIME        CUMULATIVE      PERCENTAGE
@@ -97,7 +100,7 @@ public class MarkingStopwatch {
         long totalTime = getTotalTime();    
         for (Mark mark : marks) {
             long duration = mark.time - previousTime;
-            long cumulative = mark.time - startedTime; // —İÏŠÔ
+            long cumulative = mark.time - startedTime; // ï¿½İÏï¿½ï¿½ï¿½
             double percentage = ((double)duration / (double)totalTime) * 100;
             
             out.append(String.format(
