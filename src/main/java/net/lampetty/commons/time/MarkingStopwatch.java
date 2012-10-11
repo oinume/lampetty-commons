@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 処理の実行時間にマークを付けることができるストップウォッチです。
- * 
+ * MarkingStopwatch enables you to add marks for a point of code.
+ *
  * <pre>
  * MarkingStopWatch watch = new MarkingStopWatch();
  * watch.start();
  * watch.mark("first");
+ * // Do something
  * watch.mark("second");
  * watch.stop();
  * System.out.println(watch.report());
  * </pre>
- * を実行すると下記のようにmarkした箇所の処理までの時間を測ることができます。
+ * Run above, you can measure from mark to mark as follows.
  * <pre>
  * NAME                                   TIME(ms)    CUMULATIVE(ms)  PERCENTAGE
  * first                                   102         102             33.55%
@@ -29,16 +30,16 @@ public class MarkingStopwatch {
     private long stoppedTime = -1;
     
     /**
-     * �X�g�b�v�E�H�b�`���J�n���܂��B
+     * Starts the stopwatch.
      */
     public void start() {
         startedTime = System.currentTimeMillis();    
     }
 
     /**
-     * �I����������Ƀ}�[�N�����܂��B{@link #report()}���\�b�h�Ŏg�p����܂��B
+     * Adds a mark for some code.
      * 
-     * @param name �}�[�N�̖��O
+     * @param name mark
      */
     public void mark(String name) {
         if (stoppedTime != -1) {
@@ -48,7 +49,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * �X�g�b�v�E�H�b�`���~���܂��B
+     * Stops the stopwatch.
      */
     public void stop() {
         if (stoppedTime == -1) {
@@ -57,16 +58,16 @@ public class MarkingStopwatch {
     }
     
     /**
-     * ���݂̎��� - �J�n���Ԃ��擾���܂��B
+     * Returns current time - started time.
      * 
-     * @return ���݂̎��� - �J�n����
+     * @return currentTime - startedTime
      */
     public long getCurrentElapsedTime() {
         return System.currentTimeMillis() - startedTime;
     }
     
     /**
-     * ���v���Ԃ��擾���܂��Bstop() - start()�̍��ɂȂ�܂��B
+     * Returns stopped time - started time.
      * 
      * @return ���v����
      */
@@ -76,7 +77,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * �������Ԃ��܂Ƃ߂ĉ��L�̂悤�ȕ������Ԃ��܂��B
+     * Returns result like following string.
      * 
      * <pre>
      * NAME                      TIME        CUMULATIVE      PERCENTAGE
@@ -85,7 +86,7 @@ public class MarkingStopwatch {
      * _stop_                    0.000       0.357           0.008%
      * </pre>
      * 
-     * @return 
+     * @return string
      */
     public String report() {
         stop();
