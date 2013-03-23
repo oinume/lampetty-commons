@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A stopwatch class to be able to mark texts for codes.
- * An example is below.
+ * MarkingStopwatch enables you to add marks for a point of code.
  * <pre>
  * MarkingStopWatch watch = new MarkingStopWatch();
  * watch.start();
@@ -17,7 +16,7 @@ import java.util.List;
  * watch.stop();
  * System.out.println(watch.report());
  * </pre>
- * It produces
+ * Run above, you can measure from mark to mark as follows.
  * <pre>
  * NAME                                   TIME(ms)    CUMULATIVE(ms)  PERCENTAGE
  * first                                   102         102             33.55%
@@ -32,16 +31,16 @@ public class MarkingStopwatch {
     private long stoppedTime = -1;
     
     /**
-     * Starts this stopwatch
+     * Starts the stopwatch.
      */
     public void start() {
         startedTime = System.currentTimeMillis();    
     }
 
     /**
-     * Add a mark to current code.
+     * Adds a mark for some code.
      * 
-     * @param name a name of mark
+     * @param name mark
      */
     public void mark(String name) {
         if (stoppedTime != -1) {
@@ -51,7 +50,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * Stops this stopwatch.
+     * Stops the stopwatch.
      */
     public void stop() {
         if (stoppedTime == -1) {
@@ -60,16 +59,16 @@ public class MarkingStopwatch {
     }
     
     /**
-     * Returns currently elapsed time.
+     * Returns current time - started time.
      * 
-     * @return elapsed time
+     * @return currentTime - startedTime
      */
     public long getCurrentElapsedTime() {
         return System.currentTimeMillis() - startedTime;
     }
     
     /**
-     * Stops this stopwatch and returns total elapsed time.
+     * Stops this stopwatch and returns stopped time - started time.
      * 
      * @return total elapsed time
      */
@@ -79,7 +78,8 @@ public class MarkingStopwatch {
     }
     
     /**
-     * Returns a report text like this.
+     * Returns result like following string.
+     * 
      * <pre>
      * NAME                      TIME        CUMULATIVE      PERCENTAGE
      * read from database        0.123       0.123           34.462%
@@ -87,7 +87,7 @@ public class MarkingStopwatch {
      * _stop_                    0.000       0.357           0.008%
      * </pre>
      * 
-     * @return 
+     * @return string
      */
     public String report() {
         stop();
