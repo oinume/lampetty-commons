@@ -4,17 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 処理の実行時間にマークを付けることができるストップウォッチです。
- * 
+ * A stopwatch class to be able to mark texts for codes.
+ * An example is below.
  * <pre>
  * MarkingStopWatch watch = new MarkingStopWatch();
  * watch.start();
+ * Thread.sleep(100);
  * watch.mark("first");
+ * Thread.sleep(100);
  * watch.mark("second");
+ * Thread.sleep(100);
  * watch.stop();
  * System.out.println(watch.report());
  * </pre>
- * を実行すると下記のようにmarkした箇所の処理までの時間を測ることができます。
+ * It produces
  * <pre>
  * NAME                                   TIME(ms)    CUMULATIVE(ms)  PERCENTAGE
  * first                                   102         102             33.55%
@@ -29,16 +32,16 @@ public class MarkingStopwatch {
     private long stoppedTime = -1;
     
     /**
-     * �X�g�b�v�E�H�b�`���J�n���܂��B
+     * Starts this stopwatch
      */
     public void start() {
         startedTime = System.currentTimeMillis();    
     }
 
     /**
-     * �I����������Ƀ}�[�N�����܂��B{@link #report()}���\�b�h�Ŏg�p����܂��B
+     * Add a mark to current code.
      * 
-     * @param name �}�[�N�̖��O
+     * @param name a name of mark
      */
     public void mark(String name) {
         if (stoppedTime != -1) {
@@ -48,7 +51,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * �X�g�b�v�E�H�b�`���~���܂��B
+     * Stops this stopwatch.
      */
     public void stop() {
         if (stoppedTime == -1) {
@@ -57,18 +60,18 @@ public class MarkingStopwatch {
     }
     
     /**
-     * ���݂̎��� - �J�n���Ԃ��擾���܂��B
+     * Returns currently elapsed time.
      * 
-     * @return ���݂̎��� - �J�n����
+     * @return elapsed time
      */
     public long getCurrentElapsedTime() {
         return System.currentTimeMillis() - startedTime;
     }
     
     /**
-     * ���v���Ԃ��擾���܂��Bstop() - start()�̍��ɂȂ�܂��B
+     * Stops this stopwatch and returns total elapsed time.
      * 
-     * @return ���v����
+     * @return total elapsed time
      */
     public long getTotalTime() {
         stop();
@@ -76,8 +79,7 @@ public class MarkingStopwatch {
     }
     
     /**
-     * �������Ԃ��܂Ƃ߂ĉ��L�̂悤�ȕ������Ԃ��܂��B
-     * 
+     * Returns a report text like this.
      * <pre>
      * NAME                      TIME        CUMULATIVE      PERCENTAGE
      * read from database        0.123       0.123           34.462%
